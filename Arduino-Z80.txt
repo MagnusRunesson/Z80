@@ -1,0 +1,29 @@
+Arduino				SRAM
+22-36				A0-A14
+(37					unused)
+38-45				D0-D7
+46					WE
+47					OE
+48					CE
+
+
+
+
+
+Arduino				Z80
+22-37				A0-A15
+38-45				D0-D7
+46					WR
+47					RD
+48					CLK
+49					INT
+					NMI
+50					HALT
+51					MREQ
+					IOREQ
+2					RFSH
+3					M1
+4					RESET
+5					BUSRQ
+6					WAIT
+7					BUSAK
