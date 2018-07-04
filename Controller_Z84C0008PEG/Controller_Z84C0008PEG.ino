@@ -65,18 +65,33 @@ menuOption menu[] {
   {
     "Print chip information",
     '1',
-    &chipPrintStuff,
+    &chipPrintStuffMenu,
   },
   {
     "Chip reset",
     'r',
-    &chipReset,
+    &chipResetMenu,
   },
   {
     "Chip clock pulse",
     'c',
-    &chipClockPulse,
-  }
+    &chipClockPulseMenu,
+  },
+  {
+    "Address bus read",
+    'a',
+    &addressBusPrintMenu,
+  },
+  {
+    "Data bus write",
+    'd',
+    &dataBusWriteMenu,
+  },
+  {
+    "Data bus read",
+    'f',
+    &dataBusReadMenu,
+  },
 };
 
 
@@ -100,7 +115,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  char* pszMessage = serialLoop();
+  unsigned char* pszMessage = serialLoop();
   if(pszMessage != NULL)
   {
     runMenu( pszMessage[ 0 ], pszMessage );

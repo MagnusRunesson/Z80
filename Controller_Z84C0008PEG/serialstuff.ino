@@ -9,6 +9,13 @@ void serialWriteInt( int _o )
   Serial.write( itoab );
 }
 
+void serialWriteHex( int _o )
+{
+  char itoab[ 9 ];
+  itoa( _o, itoab, 16 );
+  Serial.write( itoab );
+}
+
 void serialWriteBool( bool _value )
 {
   Serial.write(_value?"True":"False");
@@ -28,7 +35,7 @@ void serialSetup()
 
 unsigned char* serialLoop()
 {
-    char* pszRet = NULL;
+  unsigned char* pszRet = NULL;
   //Serial.write( "Is reading: " + isReading ? "Yes\n":"No\n" );
   if( Serial.available())
   {

@@ -56,6 +56,7 @@ void chipPrintStuff()
   Serial.write(" IOREQ: "); chipPrintPin( PIN_IOREQ ); Serial.write("\n");
   Serial.write("  RFSH: "); chipPrintPin( PIN_RFSH ); Serial.write("\n");
   Serial.write("BUSACK: "); chipPrintPin( PIN_BUSACK ); Serial.write("\n");
+  addressBusPrint();
 }
 
 void chipClockPulse()
@@ -64,6 +65,21 @@ void chipClockPulse()
   delay(100);
   digitalWrite(PIN_CLK, LOW);
   delay(100);
+}
+
+void chipPrintStuffMenu( unsigned char* _ )
+{
+  chipPrintStuff();
+}
+
+void chipClockPulseMenu( unsigned char* _ )
+{
+   chipClockPulse();
+}
+
+void chipResetMenu( unsigned char* _ )
+{
+  chipReset();
 }
 
 void chipReset()
