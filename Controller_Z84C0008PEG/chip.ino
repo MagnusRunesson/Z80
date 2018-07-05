@@ -46,6 +46,29 @@ void chipPrintPin( int _pin )
   Serial.write(high?"High":"Low");
 }
 
+const int CHIPMASK_ACTIVE_M1         = 1<<0;
+const int CHIPMASK_ACTIVE_WR         = 1<<1;
+const int CHIPMASK_ACTIVE_RD         = 1<<2;
+const int CHIPMASK_ACTIVE_HALT       = 1<<3;
+const int CHIPMASK_ACTIVE_MREQ       = 1<<4;
+const int CHIPMASK_ACTIVE_IOREQ      = 1<<5;
+const int CHIPMASK_ACTIVE_RFSH       = 1<<6;
+const int CHIPMASK_ACTIVE_BUSACK     = 1<<7;
+
+int chipGetStatusMask()
+{
+  int ret = 0;
+  if( digitalRead( PIN_M1 ) == LOW ) ret |= CHIPMASK_ACTIVE_M1;
+  if( digitalRead( PIN_WR ) == LOW ) ret |= CHIPMASK_ACTIVE_WR;
+  if( digitalRead( PIN_RD ) == LOW ) ret |= CHIPMASK_ACTIVE_RD;
+  if( digitalRead( PIN_HALT ) == LOW ) ret |= CHIPMASK_ACTIVE_HALT;
+  if( digitalRead( PIN_MREQ ) == LOW ) ret |= CHIPMASK_ACTIVE_MREQ;
+  if( digitalRead( PIN_IOREQ ) == LOW ) ret |= CHIPMASK_ACTIVE_IOREQ;
+  if( digitalRead( PIN_RFSH ) == LOW ) ret |= CHIPMASK_ACTIVE_RFSH;
+  if( digitalRead( PIN_BUSACK ) == LOW ) ret |= CHIPMASK_ACTIVE_BUSACK;
+  return ret;
+}
+
 void chipPrintStuff()
 {
   Serial.write("    M1: "); chipPrintPin( PIN_M1 ); Serial.write("\n");
