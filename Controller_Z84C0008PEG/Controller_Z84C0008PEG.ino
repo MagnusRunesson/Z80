@@ -99,6 +99,11 @@ menuOption menu[] {
     'o',
     &ioReadPartyMenu,
   },
+  {
+    "Figure out what is next",
+    'g',
+    &glueFigureOutWhatsNext,
+  }
 };
 
 
