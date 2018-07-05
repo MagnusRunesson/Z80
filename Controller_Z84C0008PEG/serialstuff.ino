@@ -29,7 +29,7 @@ void resetRead()
 }
 void serialSetup()
 {
-  Serial.begin(9600);
+  Serial.begin(57600);
   resetRead();
 }
 
