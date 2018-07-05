@@ -94,6 +94,11 @@ menuOption menu[] {
     'f',
     &dataBusReadMenu,
   },
+  {
+    "Copy requested data from ROM to data bus",
+    'o',
+    &ioReadPartyMenu,
+  },
 };
 
 
