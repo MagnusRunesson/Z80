@@ -62,9 +62,9 @@ void chipPrintStuff()
 void chipClockPulse()
 {
   digitalWrite(PIN_CLK, HIGH);
-  delay(100);
+  delay(1);
   digitalWrite(PIN_CLK, LOW);
-  delay(100);
+  delay(1);
 }
 
 void chipPrintStuffMenu( unsigned char* _ )
