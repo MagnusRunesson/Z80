@@ -1,6 +1,6 @@
                         ; --------------------------------------
                         ; zasm: assemble "first.asm"
-                        ; date: 2018-07-05 11:16:23
+                        ; date: 2018-07-07 11:37:14
                         ; --------------------------------------
 
 
@@ -34,12 +34,17 @@
                         ; define some code here
                         
 0000: 00       [ 4]     	nop
-0001: 18FE     [16]     	jr  $
+0001: 210700   [14]     	ld hl,janne
+0004: 7E       [21]     	ld a,(hl)
+0005: 18FE     [33]     	jr  $
+                        
+0007: 7F                janne:	.db	$7f
+0008: 30                output: .db	$30
 
 
 ; +++ segments +++
 
-#CODE CODE:      start=0     len=3    
+#CODE CODE:      start=0     len=9    
 #DATA VARIABLES: start=23296 len=256  
 
 ; +++ global symbols +++
@@ -48,7 +53,9 @@ CODE       = $0000 =      0  CODE      first.asm:25 (unused)
 VARIABLES  = $5B00 =  23296  VARIABLES first.asm:19 (unused)
 code_start = $0000 =      0            first.asm:17
 data_start = $5B00 =  23296            first.asm:16
+janne      = $0007 =      7  CODE      first.asm:35
+output     = $0008 =      8  CODE      first.asm:36 (unused)
 
 
-total time: 0.0030 sec.
+total time: 0.0029 sec.
 no errors

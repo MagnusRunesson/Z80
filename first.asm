@@ -28,4 +28,9 @@ code_start  equ 0x0000
 ; define some code here
 
 	nop
+	ld hl,janne
+	ld a,(hl)
 	jr  $
+
+janne:	.db	$7f
+output: .db	$30
