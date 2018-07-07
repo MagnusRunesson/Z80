@@ -86,6 +86,11 @@ menuOption menu[] {
     &ioReadPartyMenu,
   },
   {
+    "Copy from data to address on bus",
+    'p',
+    &ioWritePartyMenu,
+  },
+  {
     "Figure out what is next",
     'g',
     &glueFigureOutWhatsNext,
@@ -94,8 +99,9 @@ menuOption menu[] {
 
 void setup() {
   serialSetup();
-  showMenu();
   chipSetup();
+  glueSetup();
+  showMenu();
 }
 
 void loop() {

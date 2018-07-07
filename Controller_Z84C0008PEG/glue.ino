@@ -1,3 +1,5 @@
+char* RAM;
+
 const int GLUE_CHIPMASK_READ_INSTRUCTION    = CHIPMASK_ACTIVE_M1 | CHIPMASK_ACTIVE_RD | CHIPMASK_ACTIVE_MREQ;
 const int GLUE_CHIPMASK_READ_MEMORY         = CHIPMASK_ACTIVE_RD | CHIPMASK_ACTIVE_MREQ;
 const int GLUE_CHIPMASK_WRITE_MEMORY        = CHIPMASK_ACTIVE_WR | CHIPMASK_ACTIVE_MREQ;
@@ -6,6 +8,12 @@ int glueHasReset;
 
 void glueSetup()
 {
+  RAM = malloc(65536);
+
+  Serial.write( "RAM: 0x" );
+  serialWriteHex( (int)RAM );
+  Serial.write( "\n" );
+  
   glueHasReset = 0;
 }
 
@@ -36,6 +44,8 @@ void glueFigureOutWhatsNext( unsigned char* _pszMessage )
   } else if( chipStatus == GLUE_CHIPMASK_WRITE_MEMORY )
   {
     Serial.write("Write memory\n");
+    ioWriteFromDataToAddress( RAM );
+    chipClockPulse();
   } else
   {
     Serial.write("Unknown\n");
