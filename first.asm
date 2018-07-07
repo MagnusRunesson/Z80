@@ -30,6 +30,9 @@ code_start  equ 0x0000
 	nop
 	ld hl,janne
 	ld a,(hl)
+	ld hl,output
+	ld (hl),a
+
 	jr  $
 
 janne:	.db	$7f
