@@ -38,8 +38,6 @@ const int PIN_BUSREQ          = 5;
 const int PIN_WAIT            = 6;
 const int PIN_BUSACK          = 7;
 
-const int PIN_POWER           = 13;
-
 typedef struct menuOption {
   char* menuMessage;
   unsigned char menuKey;
@@ -52,18 +50,6 @@ void menuFunc( unsigned char* _input )
 }
 
 menuOption menu[] {
-  /*
-  {
-    "Power on",
-    '1',
-    &powerOn,
-  },
-  {
-    "Power off",
-    '0',
-    &powerOff,
-  },
-  */
   {
     "Print chip information",
     '1',
@@ -105,19 +91,6 @@ menuOption menu[] {
     &glueFigureOutWhatsNext,
   }
 };
-
-
-void powerOn(unsigned char*)
-{
-  Serial.write("Powering on");
-  digitalWrite(PIN_POWER, HIGH);
-}
-
-void powerOff(unsigned char*)
-{
-  Serial.write("Powering off");
-  digitalWrite(PIN_POWER, LOW);
-}
 
 void setup() {
   serialSetup();

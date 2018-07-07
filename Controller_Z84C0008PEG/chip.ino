@@ -32,8 +32,6 @@ void chipSetup()
   digitalWrite(PIN_RESET, HIGH);
   pinMode(PIN_BUSREQ, OUTPUT);
   digitalWrite(PIN_BUSREQ, HIGH);
-  pinMode(PIN_POWER, OUTPUT);
-  digitalWrite(PIN_POWER, LOW);
 
   //
   // The only pins left are the data pins and they can go both ways, so I do not initialize them beforehand
