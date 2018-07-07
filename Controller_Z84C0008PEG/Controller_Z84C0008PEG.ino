@@ -96,11 +96,6 @@ void setup() {
   serialSetup();
   showMenu();
   chipSetup();
-  serialWriteHex(first[0]);
-  Serial.write(",");
-  serialWriteHex(first[1]);
-  Serial.write(",");
-  serialWriteHex(first[2]);
 }
 
 void loop() {
