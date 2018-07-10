@@ -112,7 +112,7 @@ menuOption menu[] {
   {
     "Figure out what is next",
     'g',
-    &glueFigureOutWhatsNext,
+    &glueFigureOutWhatsNextMenu,
   }
 };
 
@@ -129,6 +129,8 @@ void loop() {
   if(pszMessage != NULL)
   {
     runMenu( pszMessage[ 0 ], pszMessage );
+    //chipPrintStuff( true );
+    //showMenu();
   }
 }
 

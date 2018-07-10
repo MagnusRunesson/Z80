@@ -39,10 +39,22 @@ void chipSetup()
   //
 }
 
-void chipPrintPin( int _pin )
+void chipPrintPin( int _pin, bool _bCompact = false )
 {
-  bool high = digitalRead( _pin ) == HIGH;
-  Serial.write(high?"High":"Low");
+  if( digitalRead( _pin ) == HIGH )
+  {
+    Serial.write( "H" );
+    if( !_bCompact )
+    {
+      Serial.write( "igh" );
+    }
+  } else {
+    Serial.write( "L" );
+    if( !_bCompact )
+    {
+      Serial.write( "ow" );
+    }
+  }
 }
 
 const int CHIPMASK_ACTIVE_M1         = 1<<0;
@@ -68,17 +80,19 @@ int chipGetStatusMask()
   return ret;
 }
 
-void chipPrintStuff()
+void chipPrintStuff( bool _bCompact )
 {
-  Serial.write("    M1: "); chipPrintPin( PIN_M1 ); Serial.write("\n");
-  Serial.write("    WR: "); chipPrintPin( PIN_WR ); Serial.write("\n");
-  Serial.write("    RD: "); chipPrintPin( PIN_RD ); Serial.write("\n");
-  Serial.write("  HALT: "); chipPrintPin( PIN_HALT ); Serial.write("\n");
-  Serial.write("  MREQ: "); chipPrintPin( PIN_MREQ ); Serial.write("\n");
-  Serial.write(" IOREQ: "); chipPrintPin( PIN_IOREQ ); Serial.write("\n");
-  Serial.write("  RFSH: "); chipPrintPin( PIN_RFSH ); Serial.write("\n");
-  Serial.write("BUSACK: "); chipPrintPin( PIN_BUSACK ); Serial.write("\n");
-  addressBusPrint();
+  Serial.write( "     M1: " ); chipPrintPin( PIN_M1, _bCompact ); if( !_bCompact ) { Serial.write( "\n" ); }
+  Serial.write( "     WR: " ); chipPrintPin( PIN_WR, _bCompact ); if( !_bCompact ) { Serial.write( "\n" ); }
+  Serial.write( "     RD: " ); chipPrintPin( PIN_RD, _bCompact ); if( !_bCompact ) { Serial.write( "\n" ); }
+  Serial.write( "   HALT: " ); chipPrintPin( PIN_HALT, _bCompact ); if( !_bCompact ) { Serial.write( "\n" ); }
+  Serial.write( "   MREQ: " ); chipPrintPin( PIN_MREQ, _bCompact ); if( !_bCompact ) { Serial.write( "\n" ); }
+  Serial.write( "  IOREQ: " ); chipPrintPin( PIN_IOREQ, _bCompact ); if( !_bCompact ) { Serial.write( "\n" ); }
+  Serial.write( "   RFSH: " ); chipPrintPin( PIN_RFSH, _bCompact ); if( !_bCompact ) { Serial.write( "\n" ); }
+  Serial.write( " BUSACK: " ); chipPrintPin( PIN_BUSACK, _bCompact ); if( !_bCompact ) { Serial.write( "\n" ); }
+  Serial.write( " " );
+  
+  addressBusPrint( true, !_bCompact );
 }
 
 void chipClockPulse()
@@ -91,7 +105,7 @@ void chipClockPulse()
 
 void chipPrintStuffMenu( unsigned char* _ )
 {
-  chipPrintStuff();
+  chipPrintStuff( false );
 }
 
 void chipClockPulseMenu( unsigned char* _ )

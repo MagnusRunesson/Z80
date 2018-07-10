@@ -17,39 +17,91 @@ void glueSetup()
   glueHasReset = 0;
 }
 
-void glueFigureOutWhatsNext( unsigned char* _pszMessage )
+void glueFigureOutWhatsNext( bool _bPrint = true , bool _bExecute = true );
+
+void glueFigureOutWhatsNextMenu( unsigned char* _pszMessage )
+{
+  glueFigureOutWhatsNext( false, true );
+  chipPrintStuff( true );
+  glueFigureOutWhatsNext( true, false );
+}
+
+void glueFigureOutWhatsNext( bool _bPrint = true, bool _bExecute = true )
 {
   if( glueHasReset == 0 ) {
-    Serial.write( "Reset\n" );
-    chipReset();
-    glueHasReset = 1;
+    if( _bPrint )
+    {
+      Serial.write( "Reset\n" );
+    }
+    if( _bExecute )
+    {
+      chipReset();
+      glueHasReset = 1;
+    }
     return;
   }
   
   int chipStatus = chipGetStatusMask();
-  Serial.write( "Chip status mask: 0x" );
-  serialWriteHex( chipStatus );
-  Serial.write( "\n" );
+  if( _bPrint )
+  {
+    Serial.write( "Chip status mask: 0x" );
+    serialWriteHex( chipStatus );
+    Serial.write( " - " );
+  }
 
   if( chipStatus == GLUE_CHIPMASK_READ_INSTRUCTION )
   {
-    Serial.write("Read instruction\n");
-    ioReadFromAddressWriteToData(first);
-    chipClockPulse();
+    if( _bPrint )
+    {
+      Serial.write( "Read INSTRUCTION from address 0x" );
+      serialWriteHex( addressBusRead());
+      Serial.write( "\n" );
+    }
+    
+    if( _bExecute )
+    {
+      ioReadFromAddressWriteToData(first);
+      chipClockPulse();
+    }
   } else if( chipStatus == GLUE_CHIPMASK_READ_MEMORY )
   {
-    Serial.write("Read memory\n");
-    ioReadFromAddressWriteToData(first);
-    chipClockPulse();
+    if( _bPrint )
+    {
+      Serial.write("Read MEMORY from address 0x");
+      serialWriteHex( addressBusRead());
+      Serial.write( "\n" );
+    }
+    
+    if( _bExecute )
+    {
+      ioReadFromAddressWriteToData(first);
+      chipClockPulse();
+    }
   } else if( chipStatus == GLUE_CHIPMASK_WRITE_MEMORY )
   {
-    Serial.write("Write memory\n");
-    ioWriteFromDataToAddress( RAM );
-    chipClockPulse();
+    if( _bPrint )
+    {
+      Serial.write("Write MEMORY to address 0x");
+      serialWriteHex( addressBusRead());
+      Serial.write( "\n" );
+    }
+    
+    if( _bExecute )
+    {
+      ioWriteFromDataToAddress( RAM );
+      chipClockPulse();
+    }
   } else
   {
-    Serial.write("Unknown\n");
-    chipClockPulse();
+    if( _bPrint )
+    {
+      Serial.write("Unknown state. Just do a clock pulse\n");
+    }
+    
+    if( _bExecute )
+    {
+      chipClockPulse();
+    }
   }
 }
 

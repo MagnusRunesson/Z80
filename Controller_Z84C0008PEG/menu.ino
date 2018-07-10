@@ -15,9 +15,11 @@ void runMenu( unsigned char _menuChoice, unsigned char* _pszMessage)
   {
     if( _menuChoice == menu[ i ].menuKey )
     {
+      /*
       Serial.write( "Identified command " );
       Serial.write( _menuChoice );
       Serial.write( "\n" );
+      */
       menu[ i ].pfnFunc( _pszMessage );
       ranMenu  = true;
       break;
@@ -26,15 +28,19 @@ void runMenu( unsigned char _menuChoice, unsigned char* _pszMessage)
 
   if( ranMenu == false )
   {
-    Serial.write( "Unknown command: " );
-    Serial.write( _menuChoice );
-    Serial.write( " (" );
-    Serial.write( (char*)_pszMessage );
-    Serial.write( ")\n");
+    if( strlen( _pszMessage ) == 0 )
+    {
+      showMenu();
+    }
+    else
+    {
+      Serial.write( "Unknown command: " );
+      Serial.write( _menuChoice );
+      Serial.write( " (" );
+      Serial.write( (char*)_pszMessage );
+      Serial.write( ")\n");
+    }
   }
-
-  chipPrintStuff();
-  showMenu();
 }
 
 void showMenu()
