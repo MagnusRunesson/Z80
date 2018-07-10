@@ -61,6 +61,11 @@ void ioWriteFromDataToAddress( unsigned char* _pMemory )
   Serial.write( "Writing to address: 0x" );
   serialWriteHex( address );
   Serial.write( "\n" );
+
+  if((address & 0x8000) == 0 )
+  {
+    Serial.write( "ERROR! Trying to WRITE to ROM. Not great!\n" );
+  }
   
   int data = dataBusRead();
   _pMemory[ address ] = data;
