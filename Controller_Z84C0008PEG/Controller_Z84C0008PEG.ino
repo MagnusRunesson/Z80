@@ -113,6 +113,11 @@ menuOption menu[] {
     "Figure out what is next",
     'g',
     &glueFigureOutWhatsNextMenu,
+  },
+  {
+    "IO Write party",
+    'w',
+    &ioWritePartyMenu,
   }
 };
 
