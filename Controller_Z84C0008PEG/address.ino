@@ -5,7 +5,8 @@ int addressBusRead()
   
   for( i=0; i<16; i++ )
   {
-    if( digitalRead( PIN_ADDRESS_BASE + i ) == HIGH )
+    int pin = PIN_ADDRESS[ i ];
+    if( digitalRead( pin ) == HIGH )
     {
       ret += 1<<i;
     }

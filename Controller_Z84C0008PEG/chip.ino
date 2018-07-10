@@ -6,7 +6,8 @@ void chipSetup()
   // Pins that are input (from Z80 to Arduino)
   //
   for( i=0; i<16; i++ ) {
-    pinMode(PIN_ADDRESS_BASE + i, INPUT);
+    int pin = PIN_ADDRESS[ i ];
+    pinMode(pin, INPUT);
   }
   pinMode(PIN_HALT, INPUT);
   pinMode(PIN_MREQ, INPUT);
