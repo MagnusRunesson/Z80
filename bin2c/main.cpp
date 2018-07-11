@@ -58,6 +58,7 @@ int main( int argc, const char * argv[])
 	fprintf( f, "#define __%s_h\n", pszOutSymbol );
 	fprintf( f, "\n");
 	fprintf( f, "extern \"C\" const unsigned char %s[];\n", pszOutSymbol );
+	fprintf( f, "extern \"C\" const unsigned int %s_size;\n", pszOutSymbol );
 	fprintf( f, "\n");
 	fprintf( f, "#endif // __%s_\n", pszOutSymbol );
 	fprintf( f, "\n");
@@ -72,6 +73,9 @@ int main( int argc, const char * argv[])
 	fprintf( f, "//\n" );
 	fprintf( f, "\n" );
 	fprintf( f, "extern \"C\" const unsigned char %s[];\n", pszOutSymbol );
+	fprintf( f, "extern \"C\" const unsigned int %s_size;\n", pszOutSymbol );
+	fprintf( f, "\n" );
+	fprintf( f, "const unsigned int %s_size = %i;\n", pszOutSymbol, size );
 	fprintf( f, "const unsigned char %s[] = {\n", pszOutSymbol );
 	int i;
 	for( i=0; i<size; i++ )
