@@ -1,2 +1,4 @@
 *.xcuserstate
 bin2c/bin2c.xcodeproj/xcuserdata
+*.o
+bin2c/bin2c
