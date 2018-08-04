@@ -28,8 +28,48 @@ code_start  equ 0x0000
 ; define some code here
 ;	jp $e0e0
 
+	; Write to ROM
 	ld hl,$0200
 	ld (hl),a
+
+	; Write to RAM
+	ld hl,$8000
+	ld (hl),a
+
+	; Write to ROM
+	ld hl,$0200
+	ld (hl),a
+
+	; Write to RAM
+	ld hl,$8000
+	ld (hl),a
+
+	; Write to ROM
+	ld hl,$0200
+	ld (hl),a
+
+	; Write to RAM
+	ld hl,$8000
+	ld (hl),a
+
+	; Write to ROM
+	ld hl,$0200
+	ld (hl),a
+
+	; Write to RAM
+	ld hl,$8000
+	ld (hl),a
+
+	; Write to ROM
+	ld hl,$0200
+	ld (hl),a
+
+	; Write to RAM
+	ld hl,$8000
+	ld (hl),a
+
+	;ld hl,$0200
+	;ld (hl),a
 
 	;nop
 	;ld hl,janne
@@ -45,26 +85,42 @@ code_start  equ 0x0000
 	;ld (hl),a
 	;ld hl,$0400
 	;ld (hl),a
-	ld hl,$0200
-	ld (hl),a
-	ld hl,$0100
-	ld (hl),a
-	ld hl,$0080
-	ld (hl),a
-	ld hl,$0040
-	ld (hl),a
-	ld hl,$0020
-	ld (hl),a
-	ld hl,$0010
-	ld (hl),a
-	ld hl,$0008
-	ld (hl),a
-	ld hl,$0004
-	ld (hl),a
-	ld hl,$0002
-	ld (hl),a
-	ld hl,$0001
-	ld (hl),a
+	;ld hl,$0200
+	;ld (hl),a
+
+	; Write to RAM
+	;ld hl,$8000
+	;ld (hl),a
+
+
+	;ld hl,$8000
+	;ld (hl),a
+	;ld hl,$8000
+	;ld (hl),a
+	;ld hl,$8000
+	;ld (hl),a
+	;ld hl,$8000
+	;ld (hl),a
+
+
+	;ld hl,$0100
+	;ld (hl),a
+	;ld hl,$0080
+	;ld (hl),a
+	;ld hl,$0040
+	;ld (hl),a
+	;ld hl,$0020
+	;ld (hl),a
+	;ld hl,$0010
+	;ld (hl),a
+	;ld hl,$0008
+	;ld (hl),a
+	;ld hl,$0004
+	;ld (hl),a
+	;ld hl,$0002
+	;ld (hl),a
+	;ld hl,$0001
+	;ld (hl),a
 	;ld a,(hl)
 	;inc hl
 	;ld (hl),a

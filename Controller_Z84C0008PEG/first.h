@@ -6,6 +6,7 @@
 #define __first_h
 
 extern "C" const unsigned char first[];
+extern "C" const unsigned int first_size;
 
 #endif // __first_
 
