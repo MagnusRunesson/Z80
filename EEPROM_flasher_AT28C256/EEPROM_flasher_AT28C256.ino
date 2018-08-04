@@ -215,23 +215,131 @@ void chipWrite( int _address, int _value )
   digitalWrite( PIN_WE, HIGH );
 }
 
-void setup() {
-  Serial.begin(57600);
-  pinMode( PIN_CE, OUTPUT ); digitalWrite( PIN_CE, HIGH );
-  pinMode( PIN_WE, OUTPUT ); digitalWrite( PIN_WE, HIGH );
-  pinMode( PIN_OE, OUTPUT ); digitalWrite( PIN_OE, HIGH );
-
+void flashTest()
+{
   int i;
   for( i=0; i<128; i++ )
   {
     int val = chipRead( i );
     Serial.write( "Address 0x" );
     serialWriteHex( i );
-    Serial.write( ": " );
-    serialWriteInt( val );
+    Serial.write( ": 0x" );
+    serialWriteHex( val );
     Serial.write( "\n" );
-    //chipWrite( i, i );
+    chipWrite( i, i );
   }
+}
+
+void flashNOP( int _num )
+{
+  int i;
+  for( i=0; i<_num; i++ )
+  {
+    int val = chipRead( i );
+    Serial.write( "Address 0x" );
+    serialWriteHex( i );
+    Serial.write( ": 0x" );
+    serialWriteHex( val );
+    Serial.write( "\n" );
+    chipWrite( i, 0 );
+    while( chipRead( i ) != 0 )
+    {
+      Serial.write("Waiting for write\n");
+      delay( 2 );
+    }
+  }
+}
+
+#include "rom_image.h"
+
+void flashROMImage()
+{
+  int i;
+  Serial.write( "rom image size: " );
+  serialWriteInt( rom_image_size );
+  Serial.write( " bytes\n" );
+
+  for( i=0; i<rom_image_size; i++ )
+  {
+    /*
+    if(( i % 10 ) == 9 )
+    {
+      serialWriteInt( i );
+      Serial.write( " bytes written\n" );
+    }*/
+    int val = chipRead( i );
+    Serial.write( "Address 0x" );
+    serialWriteHex( i );
+    Serial.write( " was: 0x" );
+    serialWriteHex( val );
+    chipWrite( i, rom_image[ i ]);
+    while( chipRead( i ) != rom_image[ i ])
+    {
+      delay(5);
+    Serial.write( " waiting!! " );
+    }
+    
+    Serial.write( "  - writing: 0x" );
+    serialWriteHex( rom_image[ i ]);
+    Serial.write( "\n" );
+  }
+
+  serialWriteInt( i );
+  Serial.write( " bytes written - Verify start\n" );
+
+  for( i=0; i<rom_image_size; i++ )
+  {
+    if(( i % 10 ) == 9 )
+    {
+      serialWriteInt( i );
+      Serial.write( " bytes verified\n" );
+    }
+    
+    int d = chipRead( i );
+    if( d != rom_image[ i ])
+    {
+      Serial.write( "ERROR at address 0x" );
+      serialWriteHex( i );
+      Serial.write( " - expected " );
+      serialWriteInt( rom_image[ i ]);
+      Serial.write( ", read " );
+      serialWriteInt( d );
+      Serial.write( "\n" );
+    }
+  }
+}
+
+void flashRead( int _length )
+{
+  int i;
+  Serial.write( "Reading " );
+  serialWriteInt( _length );
+  Serial.write( " bytes\n" );
+
+  for( i=0; i<_length; i++ )
+  {
+    int val = chipRead( i );
+    Serial.write( "Address 0x" );
+    serialWriteHex( i );
+    Serial.write( ": 0x" );
+    serialWriteHex( val );
+    Serial.write( "\n" );
+  }
+}
+
+void setup() {
+  Serial.begin(57600);
+  pinMode( PIN_CE, OUTPUT ); digitalWrite( PIN_CE, HIGH );
+  pinMode( PIN_WE, OUTPUT ); digitalWrite( PIN_WE, HIGH );
+  pinMode( PIN_OE, OUTPUT ); digitalWrite( PIN_OE, HIGH );
+
+
+  flashROMImage();
+  //flashNOP( 100 );
+  
+  delay( 300 );
+  
+  flashRead( 100 );
   
   //chipWrite( 0, 32 );
   //chipRead( 0 );
