@@ -141,6 +141,20 @@ void testfest( int _anim )
 
 int index = 0;
 
+void clearScreen()
+{
+  int i;
+  for( i=0; i<128*64/8; i++ )
+  {
+    uint8 v = 0;
+    if( i < 128 )
+    {
+      v = 0xff;
+    }
+    screen[ i ] = v;
+  }
+}
+
 void setPixel( int _x, int _y, int _val )
 {
   int wrofs = (_y * 128) + _x;  // Get bit index in screen array
@@ -177,16 +191,7 @@ void setup() {
 
 void loop() 
 {
-  int i;
-  for( i=0; i<128*64/8; i++ )
-  {
-    uint8 v = 0;
-    if( i < 128 )
-    {
-      v = 0xff;
-    }
-    screen[ i ] = v;
-  }
+  clearScreen();
 
   setPixel( pixel_x, pixel_y, 2 );
   
