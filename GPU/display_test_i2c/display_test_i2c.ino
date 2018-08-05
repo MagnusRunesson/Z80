@@ -235,8 +235,8 @@ void blit()
 void testfest()
 {
   testfestIndex++;
-  if( testfestIndex >= 8 ) {
-    testfestIndex -= 8;
+  if( testfestIndex >= 256 ) {
+    testfestIndex -= 256;
   }
   
   int j;
