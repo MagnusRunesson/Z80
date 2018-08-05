@@ -3,6 +3,7 @@
 typedef unsigned char uint8;
 int pixel_x, pixel_y;
 int move_x, move_y;
+int testfestIndex = 0;
 
 uint8 screen[ 128 * 64 / 8 ];
 
@@ -114,8 +115,6 @@ void blit()
     i2c_send( 0 );
   }
 }
-
-int testfestIndex = 0;
 
 void testfest()
 {
