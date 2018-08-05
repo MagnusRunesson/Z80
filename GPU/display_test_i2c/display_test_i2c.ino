@@ -181,18 +181,6 @@ void setPixel( int _x, int _y, int _val )
   }
 }
 
-void setup() {
-
-  // Initialization
-  Serial.begin(57600);
-  display_init();
-
-  pixel_x = 12;
-  pixel_y = 7;
-  move_x = 1;
-  move_y = 1;
-}
-
 void updatePixel()
 {
   setPixel( pixel_x, pixel_y, 2 );
@@ -228,6 +216,18 @@ void updatePixel()
       move_y = 1;
     }
   }
+}
+
+void setup() {
+
+  // Initialization
+  Serial.begin(57600);
+  display_init();
+
+  pixel_x = 12;
+  pixel_y = 7;
+  move_x = 1;
+  move_y = 1;
 }
 
 void loop() 
