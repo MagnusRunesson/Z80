@@ -1,5 +1,10 @@
 #define ADDR  0x78
 
+typedef unsigned char uint8;
+int pixel_x, pixel_y;
+int move_x, move_y;
+
+uint8 screen[ 128 * 64 / 8 ];
 
 void i2c_start() {
   TWCR = (1 << TWINT) | (1 << TWSTA) | (1 << TWEN);
@@ -56,6 +61,60 @@ void i2c_sendcommand(int _cmd)
   i2c_stop();
 }
 
+void blit()
+{
+  int page;
+  
+  for( page=0; page<8; page++ )
+  {
+    i2c_start();
+    i2c_send(ADDR);
+    i2c_send(0x00); //................ control byte
+    i2c_send(0xB0 + page); //................ pageAddr
+    i2c_stop();
+
+    i2c_start();
+    i2c_send(ADDR);
+    i2c_send(0x40);
+
+    // Left side off screen
+    i2c_send( 0 );
+    i2c_send( 0 );
+
+    uint8* screenBase = ((uint8*)screen) + (page * 128);
+
+    int x;
+    for( x=0; x<128 / 8; x++ )
+    {
+      uint8 r[ 8 ];
+      int row;
+      for( row=0; row<8; row++ )
+      {
+        r[ row ] = screenBase[( 128 * row ) / 8 ];
+      }
+
+      int column;
+      for( column=0; column<8; column++ )
+      {
+        uint8 c = 0;
+        
+        for( row=0; row<8; row++ )
+        {
+          c += ((r[ row ] >> column) & 1) << row;
+        }
+
+        i2c_send( c );
+      }
+      
+      screenBase++;
+    }
+
+    // Right side off screen
+    i2c_send( 0 );
+    i2c_send( 0 );
+  }
+}
+
 void testfest( int _anim )
 {
   /*
@@ -95,6 +154,30 @@ void testfest( int _anim )
   }
 }
 
+int index = 0;
+
+void setPixel( int _x, int _y, int _val )
+{
+  int wrofs = (_y * 128) + _x;  // Get bit index in screen array
+  wrofs >>= 3;  // Get byte index in screen array
+  int wrbit = _x & 7;
+
+  if( _val == 0 )
+  {
+    int wrmask = ~(1 << wrbit);
+    screen[ wrofs ] &= wrmask;
+  } else if( _val == 1 )
+  {
+    int wrmask = 1 << wrbit;
+    screen[ wrofs ] |= wrmask;
+  }
+  else if( _val == 2 )
+  {
+    int wrmask = 1 << wrbit;
+    screen[ wrofs ] ^= wrmask;
+  }
+}
+
 void setup() {
 
   // Initialization
@@ -129,16 +212,67 @@ void setup() {
     Serial.println(a[i], HEX);
   }
   */
+  
+  pixel_x = 12;
+  pixel_y = 7;
+  move_x = 1;
+  move_y = 1;
 }
-
-int index = 0;
 
 void loop() 
 {
+  int i;
+  for( i=0; i<128*64/8; i++ )
+  {
+    uint8 v = 0;
+    if( i < 128 )
+    {
+      v = 0xff;
+    }
+    screen[ i ] = v;
+  }
+
+  setPixel( pixel_x, pixel_y, 2 );
+  
+  if( move_x > 0 )
+  {
+    pixel_x++;
+    if( pixel_x >= 127 )
+    {
+      move_x = -1;
+    }
+  } else
+  {
+    pixel_x--;
+    if( pixel_x <= 0 )
+    {
+      move_x = 1;
+    }
+  }
+
+  if( move_y > 0 )
+  {
+    pixel_y++;
+    if( pixel_y >= 63 )
+    {
+      move_y = -1;
+    }
+  } else
+  {
+    pixel_y--;
+    if( pixel_y <= 0 )
+    {
+      move_y = 1;
+    }
+  }
+
+  blit();
+  /*
   testfest(index);
   index++;
   if( index >= 8 ) {
     index -= 8;
   }
+  */
 }
 
