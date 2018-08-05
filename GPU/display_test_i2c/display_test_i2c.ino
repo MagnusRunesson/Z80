@@ -115,8 +115,15 @@ void blit()
   }
 }
 
-void testfest( int _anim )
+int testfestIndex = 0;
+
+void testfest()
 {
+  testfestIndex++;
+  if( testfestIndex >= 8 ) {
+    testfestIndex -= 8;
+  }
+  
   int j;
   for( j=0; j<8; j++ )
   {
@@ -132,14 +139,12 @@ void testfest( int _anim )
 
     int i;
     for( i=0; i<132; i++ ) {
-      i2c_send( (_anim + i) & 255 );
+      i2c_send(( testfestIndex + i) & 255 );
     }
 
     i2c_stop();
   }
 }
-
-int index = 0;
 
 void clearScreen()
 {
@@ -229,16 +234,8 @@ void updatePixel()
 void loop() 
 {
   clearScreen();
-
   updatePixel();
-
   blit();
-  /*
-  testfest(index);
-  index++;
-  if( index >= 8 ) {
-    index -= 8;
-  }
-  */
+  //testfest();
 }
 
