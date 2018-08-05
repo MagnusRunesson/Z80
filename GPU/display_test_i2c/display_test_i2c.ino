@@ -189,10 +189,8 @@ void setup() {
   move_y = 1;
 }
 
-void loop() 
+void updatePixel()
 {
-  clearScreen();
-
   setPixel( pixel_x, pixel_y, 2 );
   
   if( move_x > 0 )
@@ -226,6 +224,13 @@ void loop()
       move_y = 1;
     }
   }
+}
+
+void loop() 
+{
+  clearScreen();
+
+  updatePixel();
 
   blit();
   /*
