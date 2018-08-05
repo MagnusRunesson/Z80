@@ -117,21 +117,6 @@ void blit()
 
 void testfest( int _anim )
 {
-  /*
-  // COLUMNADDR
-  i2c_sendcommand(0x21);
-  i2c_sendcommand(0x00);
-  i2c_sendcommand(0x7f);
-
-  // PAGEADDR
-  i2c_sendcommand(0x22);
-  i2c_sendcommand(0x00);
-  i2c_sendcommand(0x07);
-
-  // SETSTARTLINE
-  i2c_sendcommand(0x40);
-  */
-
   int j;
   for( j=0; j<8; j++ )
   {
@@ -184,35 +169,6 @@ void setup() {
   Serial.begin(57600);
   display_init();
 
-  /*
-  // Request RAM data
-  i2c_start();
-  i2c_send(ADDR);
-  i2c_send(0x80); //   control byte
-  i2c_send(0xB0); // page address
-  i2c_send(0x80); //   control byte
-  i2c_send(0x10); // column address high
-  i2c_send(0x80); //   control byte
-  i2c_send(0x00); // column address low
-  i2c_send(0x40); //   control byte
-  i2c_send(0xE3); // nop
-  i2c_stop();
-
-  // get RAM data
-  uint8_t a[10];
-  i2c_start();
-  i2c_send(ADDR + 1);
-  for (int i = 0; i < 9; i++) a[i] = i2c_read(false);
-  a[9] = i2c_read(false);
-  i2c_stop();
-
-  // print results
-  for (int i = 0; i < 10; i++) {
-    Serial.print("0x");
-    Serial.println(a[i], HEX);
-  }
-  */
-  
   pixel_x = 12;
   pixel_y = 7;
   move_x = 1;
