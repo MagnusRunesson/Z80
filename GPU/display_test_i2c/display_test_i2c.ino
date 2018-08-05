@@ -199,21 +199,23 @@ void blit()
     uint8* screenBase = ((uint8*)screen) + (page * 128);
 
     int x;
-    for( x=0; x<128 / 8; x++ )
+    const int columnWidth = 8;  // Read/write this many bits at a time. must match the datatype that is written (8 for unsigned byte, 32 for unsigned int)
+    const int numRowsPerPage = 8; // This can't be changed because it is decided by the SH1106 chip that each page contain 8 rows (each bit in a byte is one row, so yeah it's pretty hard wired)
+    for( x=0; x<128 / columnWidth; x++ )
     {
-      uint8 r[ 8 ];
+      uint8 r[ numRowsPerPage ]; // This data type must be able to contain the columnWidth number of bits
       int row;
-      for( row=0; row<8; row++ )
+      for( row=0; row<numRowsPerPage; row++ )
       {
-        r[ row ] = screenBase[( 128 * row ) / 8 ];
+        r[ row ] = screenBase[( 128 * row ) / columnWidth ];
       }
 
       int column;
-      for( column=0; column<8; column++ )
+      for( column=0; column<columnWidth; column++ )
       {
         uint8 c = 0;
         
-        for( row=0; row<8; row++ )
+        for( row=0; row<numRowsPerPage; row++ )
         {
           c += ((r[ row ] >> column) & 1) << row;
         }
