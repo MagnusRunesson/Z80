@@ -234,6 +234,40 @@ void blit()
   }
 }
 
+void blit_image( unsigned char* _pImage )
+{
+  int page;
+
+  for( page=0; page<8; page++ )
+  {
+    i2c_start(ADDR);
+    i2c_send(0x00); //................ control byte
+    i2c_send(0xB0 + page); //................ pageAddr
+    i2c_stop();
+
+    i2c_start(ADDR);
+    i2c_send(0x40);
+
+    // Left side off screen
+    i2c_send( 0 );
+    i2c_send( 0 );
+
+    int x;
+    for( x=0; x<128; x++ )
+    {
+      unsigned char v = _pImage[ (page*128) + x ];
+      i2c_send( v );
+    }
+
+    // Right side off screen
+    i2c_send( 0 );
+    i2c_send( 0 );
+    
+    i2c_stop();
+  }
+}
+
+
 void testfest()
 {
   testfestIndex++;
@@ -347,11 +381,14 @@ void setup() {
   move_y = 1;
 }
 
+#include "test0.h"
+
 void loop() 
 {
-  clearScreen();
-  updatePixel();
-  blit();
+  waitCycles = 0;
+  //clearScreen();
+  //updatePixel();
+  blit_image( test0_pixels );
   //testfest();
 }
 
