@@ -29,8 +29,11 @@ void writeHeader( FILE* f, char* _symbolNameBase, SDL_Surface* image )
 
 void writePixels( FILE* f, char* _symbolNameBase, SDL_Surface* image, int* _pTotalOutputSize )
 {
-	fprintf( f, "extern \"C\" const unsigned char %s_pixels[];\n", _symbolNameBase );
-	fprintf( f, "const unsigned char %s_pixels[] =\n{\n", _symbolNameBase );
+	fprintf( f, "#include <avr/pgmspace.h>\n" );
+	fprintf( f, "\n" );
+	
+	fprintf( f, "extern \"C\" const unsigned char PROGMEM %s_pixels[];\n", _symbolNameBase );
+	fprintf( f, "const unsigned char PROGMEM %s_pixels[] =\n{\n", _symbolNameBase );
 
 	unsigned char* pixels = (unsigned char*)image->pixels;
 	int x, y;
@@ -127,8 +130,10 @@ void writeHeaderFile( FILE* f, char* _symbolNameBase, SDL_Surface* _image )
 	fprintf( f, "#ifndef %s_data_h\n", _symbolNameBase );
 	fprintf( f, "#define %s_data_h\n", _symbolNameBase );
 	fprintf( f, "\n" );
+	fprintf( f, "#include <avr/pgmspace.h>\n" );
+	fprintf( f, "\n" );
 	//fprintf( f, "extern \"C\" const Image %s;\n", _symbolNameBase );
-	fprintf( f, "extern \"C\" const unsigned char %s_pixels[];\n", _symbolNameBase );
+	fprintf( f, "extern \"C\" const unsigned char PROGMEM %s_pixels[];\n", _symbolNameBase );
 	fprintf( f, "\n" );
 	fprintf( f, "#endif // %s_data_h\n", _symbolNameBase );
 }

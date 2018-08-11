@@ -11,6 +11,8 @@ int pixel_x, pixel_y;
 int move_x, move_y;
 int testfestIndex = 0;
 
+int waitCycles;
+
 uint8 screen[ 128 * 64 / 8 ];
 
 void i2c_set_error(uint8_t code, uint8_t pos)
@@ -66,6 +68,7 @@ uint8_t i2c_wait(uint8_t mask, uint8_t pos)
       return 0; /* error */
     }
     cnt--;
+    waitCycles++;
   }
   
   return 1; /* all ok */
@@ -255,7 +258,8 @@ void blit_image( unsigned char* _pImage )
     int x;
     for( x=0; x<128; x++ )
     {
-      unsigned char v = _pImage[ (page*128) + x ];
+      unsigned char v = pgm_read_byte_near( _pImage + (page*128) + x );
+      //unsigned char v = _pImage[ (page*128) + x ];
       i2c_send( v );
     }
 
@@ -382,13 +386,23 @@ void setup() {
 }
 
 #include "test0.h"
+#include "test1.h"
+#include "test2.h"
+#include "test3.h"
+#include "test4.h"
 
 void loop() 
 {
   waitCycles = 0;
   //clearScreen();
   //updatePixel();
-  blit_image( test0_pixels );
+  blit_image( test4_pixels );
   //testfest();
+
+  /*
+  Serial.write("Spent ");
+  serialWriteInt(waitCycles);
+  Serial.write(" cycles waiting for i2c\n");
+  */
 }
 
