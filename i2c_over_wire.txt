@@ -1,0 +1,32 @@
+void i2c_init()
+{
+  Wire.begin();
+}
+
+uint8_t i2c_start(uint8_t sla)
+{
+    uint8_t control = 0x00;   // Co = 0, D/C = 0
+    Wire.beginTransmission(sla);
+    Serial.write("i2c_start: 0x");
+    serialWriteHex( sla );
+    Serial.write("\n");
+    
+   return 1;
+}
+
+void i2c_stop(void)
+{
+    Serial.write("i2c_stop\n");
+    Wire.endTransmission();
+}
+
+uint8_t i2c_send(uint8_t data)
+{
+  Serial.write("i2c_send: 0x");
+  serialWriteHex( data );
+  Serial.write(" (");
+  serialWriteInt( data );
+  Serial.write(")\n");
+  
+    Wire.write(data);
+}
