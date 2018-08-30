@@ -3,3 +3,5 @@ bin2c/bin2c.xcodeproj/xcuserdata
 *.o
 bin2c/bin2c
 tools/png2sh1106/png2sh1106-xcode.xcodeproj/xcuserdata
+tools/png2sh1106_tilebank/png2sh1106_tilebank.xcodeproj/xcuserdata
+GPU/display_simulator/sh1106_simulator.xcodeproj/xcuserdata
