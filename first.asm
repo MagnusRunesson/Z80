@@ -25,48 +25,79 @@ code_start  equ 0x0000
 
 #code   CODE, code_start
 
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+	inc a
+
+
 ; define some code here
 ;	jp $e0e0
 
 	; Write to ROM
-	ld hl,$0200
-	ld (hl),a
+	;ld hl,$0200
+	;ld (hl),a
 
 	; Write to RAM
-	ld hl,$8000
-	ld (hl),a
+	;ld hl,$8000
+	;ld (hl),a
 
 	; Write to ROM
-	ld hl,$0200
-	ld (hl),a
+	;ld hl,$0200
+	;ld (hl),a
 
 	; Write to RAM
-	ld hl,$8000
-	ld (hl),a
+	;ld hl,$8000
+	;ld (hl),a
 
 	; Write to ROM
-	ld hl,$0200
-	ld (hl),a
+	;ld hl,$0200
+	;ld (hl),a
 
 	; Write to RAM
-	ld hl,$8000
-	ld (hl),a
+	;ld hl,$8000
+	;ld (hl),a
 
 	; Write to ROM
-	ld hl,$0200
-	ld (hl),a
+	;ld hl,$0200
+	;ld (hl),a
 
 	; Write to RAM
-	ld hl,$8000
-	ld (hl),a
+	;ld hl,$8000
+	;ld (hl),a
 
 	; Write to ROM
-	ld hl,$0200
-	ld (hl),a
+	;ld hl,$0200
+	;ld (hl),a
 
 	; Write to RAM
-	ld hl,$8000
-	ld (hl),a
+	;ld hl,$8000
+	;ld (hl),a
 
 	;ld hl,$0200
 	;ld (hl),a
@@ -125,9 +156,9 @@ code_start  equ 0x0000
 	;inc hl
 	;ld (hl),a
 
-	jr  $
+;	jr  $
 
-janne:	.db	$7f
-output: .db	$30
+;janne:	.db	$7f
+;output: .db	$30
 
-ramtest: .db 0
+;ramtest: .db 0

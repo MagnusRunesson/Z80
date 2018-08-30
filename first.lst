@@ -1,6 +1,6 @@
                         ; --------------------------------------
                         ; zasm: assemble "first.asm"
-                        ; date: 2018-07-18 20:15:24
+                        ; date: 2018-08-30 11:24:28
                         ; --------------------------------------
 
 
@@ -31,48 +31,79 @@
                         
 0000:                   #code   CODE, code_start
                         
+0000: 3C       [ 4]     	inc a
+0001: 3C       [ 8]     	inc a
+0002: 3C       [12]     	inc a
+0003: 3C       [16]     	inc a
+0004: 3C       [20]     	inc a
+0005: 3C       [24]     	inc a
+0006: 3C       [28]     	inc a
+0007: 3C       [32]     	inc a
+0008: 3C       [36]     	inc a
+0009: 3C       [40]     	inc a
+000A: 3C       [44]     	inc a
+000B: 3C       [48]     	inc a
+000C: 3C       [52]     	inc a
+000D: 3C       [56]     	inc a
+000E: 3C       [60]     	inc a
+000F: 3C       [64]     	inc a
+0010: 3C       [68]     	inc a
+0011: 3C       [72]     	inc a
+0012: 3C       [76]     	inc a
+0013: 3C       [80]     	inc a
+0014: 3C       [84]     	inc a
+0015: 3C       [88]     	inc a
+0016: 3C       [92]     	inc a
+0017: 3C       [96]     	inc a
+0018: 3C       [100]    	inc a
+0019: 3C       [104]    	inc a
+001A: 3C       [108]    	inc a
+001B: 3C       [112]    	inc a
+001C: 3C       [116]    	inc a
+                        
+                        
                         ; define some code here
                         ;	jp $e0e0
                         
                         	; Write to ROM
-0000: 210002   [10]     	ld hl,$0200
-0003: 77       [17]     	ld (hl),a
+                        	;ld hl,$0200
+                        	;ld (hl),a
                         
                         	; Write to RAM
-0004: 210080   [27]     	ld hl,$8000
-0007: 77       [34]     	ld (hl),a
+                        	;ld hl,$8000
+                        	;ld (hl),a
                         
                         	; Write to ROM
-0008: 210002   [44]     	ld hl,$0200
-000B: 77       [51]     	ld (hl),a
+                        	;ld hl,$0200
+                        	;ld (hl),a
                         
                         	; Write to RAM
-000C: 210080   [61]     	ld hl,$8000
-000F: 77       [68]     	ld (hl),a
+                        	;ld hl,$8000
+                        	;ld (hl),a
                         
                         	; Write to ROM
-0010: 210002   [78]     	ld hl,$0200
-0013: 77       [85]     	ld (hl),a
+                        	;ld hl,$0200
+                        	;ld (hl),a
                         
                         	; Write to RAM
-0014: 210080   [95]     	ld hl,$8000
-0017: 77       [102]    	ld (hl),a
+                        	;ld hl,$8000
+                        	;ld (hl),a
                         
                         	; Write to ROM
-0018: 210002   [112]    	ld hl,$0200
-001B: 77       [119]    	ld (hl),a
+                        	;ld hl,$0200
+                        	;ld (hl),a
                         
                         	; Write to RAM
-001C: 210080   [129]    	ld hl,$8000
-001F: 77       [136]    	ld (hl),a
+                        	;ld hl,$8000
+                        	;ld (hl),a
                         
                         	; Write to ROM
-0020: 210002   [146]    	ld hl,$0200
-0023: 77       [153]    	ld (hl),a
+                        	;ld hl,$0200
+                        	;ld (hl),a
                         
                         	; Write to RAM
-0024: 210080   [163]    	ld hl,$8000
-0027: 77       [170]    	ld (hl),a
+                        	;ld hl,$8000
+                        	;ld (hl),a
                         
                         	;ld hl,$0200
                         	;ld (hl),a
@@ -131,17 +162,17 @@
                         	;inc hl
                         	;ld (hl),a
                         
-0028: 18FE     [182]    	jr  $
+                        ;	jr  $
                         
-002A: 7F                janne:	.db	$7f
-002B: 30                output: .db	$30
+                        ;janne:	.db	$7f
+                        ;output: .db	$30
                         
-002C: 00                ramtest: .db 0
+                        ;ramtest: .db 0
 
 
 ; +++ segments +++
 
-#CODE CODE:      start=0     len=45   
+#CODE CODE:      start=0     len=29   
 #DATA VARIABLES: start=23296 len=256  
 
 ; +++ global symbols +++
@@ -150,10 +181,7 @@ CODE       = $0000 =      0  CODE      first.asm:25 (unused)
 VARIABLES  = $5B00 =  23296  VARIABLES first.asm:19 (unused)
 code_start = $0000 =      0            first.asm:17
 data_start = $5B00 =  23296            first.asm:16
-janne      = $002A =     42  CODE      first.asm:130 (unused)
-output     = $002B =     43  CODE      first.asm:131 (unused)
-ramtest    = $002C =     44  CODE      first.asm:133 (unused)
 
 
-total time: 0.0026 sec.
+total time: 0.0050 sec.
 no errors
