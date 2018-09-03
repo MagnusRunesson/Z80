@@ -117,7 +117,7 @@ void Audio_Handler_SDL( void *udata, Uint8 *stream, int len )
 	int i;
 	for( i=0; i<len; i++ )
 	{
-		stream[ i ] = 0;
+		stream[ i ] = 0;
 	}
 }
 
