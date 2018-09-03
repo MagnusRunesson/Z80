@@ -12,6 +12,8 @@
 
 #define INVALID_ADDRESS (-1)
 
+extern uint16* screenBuffer;
+
 class CI2C
 {
 public:
@@ -199,7 +201,7 @@ private:
 			m_command = Commands::PageAddress;
 			m_pageAddress = _data & 0x0f;
 			m_pageAddressOffset = 0;
-			printf("Page address=%i\n", m_pageAddress );
+			//printf("Page address=%i\n", m_pageAddress );
 		}
 		if((_data & 0xF0) == 0xC0 )
 		{
@@ -260,7 +262,21 @@ private:
 	
 	void WriteData( uint8 _data )
 	{
+		int screenOffset = (m_pageAddress * (132*8)) + m_pageAddressOffset;
 		
+		int bit;
+		for( bit=0; bit<8; bit++ )
+		{
+			int c = (_data >> bit) & 0x01;
+			if( c == 1 )
+			{
+				// Convert 1 bpp to 16 bpp
+				c = 0xffff;
+			}
+			screenBuffer[ screenOffset + (bit * 132) ] = c;
+		}
+		
+		m_pageAddressOffset++;
 	}
 };
 
