@@ -14,7 +14,7 @@
 #include <avr/pgmspace.h>
 #include <Serial.h>
 
-#define SCREEN_WIDTH (128)
+#define SCREEN_WIDTH (132)
 #define SCREEN_HEIGHT (64)
 
 #include "../display_test_i2c/display_test_i2c.ino"
@@ -148,9 +148,17 @@ void exit()
 	SDL_Quit();
 }
 
+uint32 Conv16to32( uint16 c )
+{
+	if( c == 0xffff )
+	{
+		return 0xffffffff;
+	}
+	return 0;
+};
+
 void blit_screenBufferToSDL()
 {
-	/*
 	uint32* pixels = (uint32*)screenSurface->pixels;
 	
 	int scw = SCREEN_WIDTH*SCREEN_PIXELSIZE;
@@ -180,7 +188,6 @@ void blit_screenBufferToSDL()
 			}
 		}
 	}
-	 */
 
 	SDL_UpdateWindowSurface( window );
 	//SDL_Delay( 15 );
