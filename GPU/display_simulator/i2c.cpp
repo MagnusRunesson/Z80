@@ -48,7 +48,7 @@ public:
 			ParseCommand( _data );
 		} else if( m_state == State::FetchingCommandParameter )
 		{
-			ParseCommandParameter( _data );
+			ParseDoubleByteCommandParameter( _data );
 		} else if( m_state == State::FetchingData )
 		{
 			WriteData( _data );
@@ -67,6 +67,7 @@ private:
 			FetchingCommands,
 			FetchingCommandParameter,
 			FetchingData,
+			ReadModifyWrite,
 		};
 	};
 
@@ -85,10 +86,17 @@ private:
 			NormalReverse,			// 8.
 			MultiplexRatio,			// 9.
 			DCDCControlMode,		// 10.
+			OLEDOnOff,				// 11.
+			PageAddress,			// 12.
+			COMScanDirection,		// 13.
+			DisplayOffset,			// 14.
+			ClockFrequency,			// 15.
+			ChargePeriods,			// 16.
 			ComConfiguration,		// 17.
-			PageAddress,
-			DisplayOffset,
-			ClockFrequency,
+			VCOMSelect,				// 18.
+			ReadModifyWriteStart,	// 19.
+			ReadModifyWriteEnd,		// 20.
+			NOP,					// 21.
 		};
 	};
 	
@@ -179,23 +187,42 @@ private:
 			m_command = Commands::DCDCControlMode;
 			m_state = State::FetchingCommandParameter;
 		}
+		if((_data & 0xFE) == 0xAE )
+		{
+			// 11. OLED on / off
+			m_command = Commands::OLEDOnOff;
+			printf("Set OLED on/off: %i\n", _data & 0x01);
+		}
 		if((_data & 0xf0) == 0xb0 )
 		{
-			// Page address
+			// 12. Page address
 			m_command = Commands::PageAddress;
 			m_pageAddress = _data & 0x0f;
 			m_pageAddressOffset = 0;
+			printf("Page address=%i\n", m_pageAddress );
+		}
+		if((_data & 0xF0) == 0xC0 )
+		{
+			// 13. Common output Scan Direction
+			m_command = Commands::COMScanDirection;
+			printf("Common scan direction: %i\n", _data & 0x08);
 		}
 		if( _data == 0xD3 )
 		{
-			// Display offset
+			// 14. Display offset
 			m_command = Commands::DisplayOffset;
 			m_state = State::FetchingCommandParameter;
 		}
 		if( _data == 0xD5 )
 		{
-			// Clock frequency
+			// 15. Clock frequency
 			m_command = Commands::ClockFrequency;
+			m_state = State::FetchingCommandParameter;
+		}
+		if( _data == 0xD9 )
+		{
+			// 16. Charge periods
+			m_command = Commands::ChargePeriods;
 			m_state = State::FetchingCommandParameter;
 		}
 		if( _data == 0xDA )
@@ -204,11 +231,31 @@ private:
 			m_command = Commands::ComConfiguration;
 			m_state = State::FetchingCommandParameter;
 		}
+		if( _data == 0xDB )
+		{
+			// 18. VCSOM select
+			m_command = Commands::VCOMSelect;
+			m_state = State::FetchingCommandParameter;
+		}
+		if( _data == 0xE0 )
+		{
+			m_command = Commands::ReadModifyWriteStart;
+			m_state = State::ReadModifyWrite;
+		}
+		if( _data == 0xEE )
+		{
+			m_command = Commands::ReadModifyWriteStart;
+			m_state = State::ReadModifyWrite;
+		}
+		if( _data == 0xE3 )
+		{
+			m_command = Commands::NOP;
+		}
 	}
 
-	void ParseCommandParameter( uint8 _data )
+	void ParseDoubleByteCommandParameter( uint8 _data )
 	{
-	
+		m_state = State::FetchingCommands;
 	}
 	
 	void WriteData( uint8 _data )
