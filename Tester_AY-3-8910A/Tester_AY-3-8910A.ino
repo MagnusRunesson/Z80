@@ -123,12 +123,12 @@ void ay_send_address(int r)
   digitalWrite(pinBDIR, HIGH);
   digitalWrite(pinBC1, HIGH);
   digitalWrite(pinBC2, HIGH);
-  delay(10);
+  //delay(10);
   digitalWrite(pinBC1, LOW);
   digitalWrite(pinBC2, LOW);
   digitalWrite(pinBDIR, LOW);
   //digitalWrite(pinBC1, LOW);
-  delay(10);
+  //delay(10);
 }
 
 void ay_send_data(int v)
@@ -137,11 +137,11 @@ void ay_send_data(int v)
   digitalWrite(pinBC1, LOW);
   digitalWrite(pinBC2, HIGH);
   digitalWrite(pinBDIR, HIGH);
-  delay(10);
+  //delay(10);
   digitalWrite(pinBDIR, LOW);
   digitalWrite(pinBC2, LOW);
   digitalWrite(pinBC1, LOW);
-  delay(10);
+  //delay(10);
 }
 
 int ay_receive_data()
