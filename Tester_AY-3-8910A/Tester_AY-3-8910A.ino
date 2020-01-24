@@ -1,3 +1,30 @@
+/**************************************************************************************************
+
+
+
+
+
+
+
+
+                                              bits 01234567
+There is a problem with one of the pins. I believe 00000100 sooooo one of the data/address pins
+
+The one that enables noise for channel 2. So that would be pin DA5 (zero based, so there is a DA0)
+
+
+
+
+
+
+
+
+
+
+
+
+**************************************************************************************************/
+
 #include <stdarg.h>
 #include <avr/io.h>
 
