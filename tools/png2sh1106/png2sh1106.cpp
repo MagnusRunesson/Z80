@@ -123,6 +123,8 @@ int main( int _numargs, char** _apszArgh )
 	//
 	SDL_Surface* image = LoadImage( pszInFileName );
 
+	printf("Image width=%i, height=%i\n", image->w, image->h);
+	
 	//
 	// Write cpp file
 	//

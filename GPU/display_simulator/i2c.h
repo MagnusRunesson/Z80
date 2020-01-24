@@ -11,6 +11,10 @@
 
 #include "types.h"
 
+#define ADDR				(0x78)
+#define CONTROL_SENDCOMMAND	(0x00)
+#define CONTROL_SENDDATA	(0x40)
+
 void i2c_init();
 uint8 i2c_start(uint8 sla);
 void i2c_stop(void);

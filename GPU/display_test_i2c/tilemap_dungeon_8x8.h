@@ -1,8 +1,12 @@
-#ifndef tilemap_dungeon_8x8_data_h
-#define tilemap_dungeon_8x8_data_h
+//
+// Data file generated from ../Art/dungeon/tilemap_dungeon_8x8.tmx
+//
+#ifndef tilemap_dungeon_8x8_header_
+#define tilemap_dungeon_8x8_header_
 
-#include <avr/pgmspace.h>
+#include "Engine/Types.h"
+#include "Engine/Graphics/TileMap.h"
 
-extern "C" const unsigned char PROGMEM tilemap_dungeon_8x8_pixels[];
+extern "C" const CTileMap tilemap_dungeon_8x8;
 
-#endif // tilemap_dungeon_8x8_data_h
+#endif // tilemap_dungeon_8x8_header_

@@ -11,12 +11,9 @@
 		25B7C2AF212DA75200A42D04 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25B7C2AE212DA75200A42D04 /* main.cpp */; settings = {ASSET_TAGS = (); }; };
 		25B7C2B4212E6F7C00A42D04 /* i2c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25B7C2B2212E6F7C00A42D04 /* i2c.cpp */; settings = {ASSET_TAGS = (); }; };
 		25B7C2BC212E714700A42D04 /* Serial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25B7C2BA212E714700A42D04 /* Serial.cpp */; settings = {ASSET_TAGS = (); }; };
-		25B7C2C4212E729C00A42D04 /* test0.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25B7C2BE212E729C00A42D04 /* test0.cpp */; settings = {ASSET_TAGS = (); }; };
-		25B7C2C5212E729C00A42D04 /* test1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25B7C2BF212E729C00A42D04 /* test1.cpp */; settings = {ASSET_TAGS = (); }; };
-		25B7C2C6212E729C00A42D04 /* test2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25B7C2C0212E729C00A42D04 /* test2.cpp */; settings = {ASSET_TAGS = (); }; };
-		25B7C2C7212E729C00A42D04 /* test3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25B7C2C1212E729C00A42D04 /* test3.cpp */; settings = {ASSET_TAGS = (); }; };
-		25B7C2C8212E729C00A42D04 /* test4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25B7C2C2212E729C00A42D04 /* test4.cpp */; settings = {ASSET_TAGS = (); }; };
 		25B7C2C9212E729C00A42D04 /* tilemap_dungeon_8x8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25B7C2C3212E729C00A42D04 /* tilemap_dungeon_8x8.cpp */; settings = {ASSET_TAGS = (); }; };
+		25B7C2CD213E414800A42D04 /* TileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25B7C2CB213E414800A42D04 /* TileMap.cpp */; settings = {ASSET_TAGS = (); }; };
+		25B7C2D0213EC52B00A42D04 /* TileBank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25B7C2CE213EC52B00A42D04 /* TileBank.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,13 +39,12 @@
 		25B7C2B9212E70C100A42D04 /* twi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = twi.h; sourceTree = "<group>"; };
 		25B7C2BA212E714700A42D04 /* Serial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Serial.cpp; sourceTree = "<group>"; };
 		25B7C2BB212E714700A42D04 /* Serial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Serial.h; sourceTree = "<group>"; };
-		25B7C2BE212E729C00A42D04 /* test0.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test0.cpp; path = ../display_test_i2c/test0.cpp; sourceTree = "<group>"; };
-		25B7C2BF212E729C00A42D04 /* test1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test1.cpp; path = ../display_test_i2c/test1.cpp; sourceTree = "<group>"; };
-		25B7C2C0212E729C00A42D04 /* test2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test2.cpp; path = ../display_test_i2c/test2.cpp; sourceTree = "<group>"; };
-		25B7C2C1212E729C00A42D04 /* test3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test3.cpp; path = ../display_test_i2c/test3.cpp; sourceTree = "<group>"; };
-		25B7C2C2212E729C00A42D04 /* test4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test4.cpp; path = ../display_test_i2c/test4.cpp; sourceTree = "<group>"; };
 		25B7C2C3212E729C00A42D04 /* tilemap_dungeon_8x8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tilemap_dungeon_8x8.cpp; path = ../display_test_i2c/tilemap_dungeon_8x8.cpp; sourceTree = "<group>"; };
 		25B7C2CA212FC18200A42D04 /* sh1106_shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sh1106_shared.h; path = ../display_test_i2c/sh1106_shared.h; sourceTree = "<group>"; };
+		25B7C2CB213E414800A42D04 /* TileMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TileMap.cpp; path = ../display_test_i2c/TileMap.cpp; sourceTree = "<group>"; };
+		25B7C2CC213E414800A42D04 /* TileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TileMap.h; path = ../display_test_i2c/TileMap.h; sourceTree = "<group>"; };
+		25B7C2CE213EC52B00A42D04 /* TileBank.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TileBank.cpp; path = ../display_test_i2c/TileBank.cpp; sourceTree = "<group>"; };
+		25B7C2CF213EC52B00A42D04 /* TileBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TileBank.h; path = ../display_test_i2c/TileBank.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,12 +120,11 @@
 			children = (
 				25B7C2B0212DA83E00A42D04 /* display_test_i2c.ino */,
 				25B7C2CA212FC18200A42D04 /* sh1106_shared.h */,
-				25B7C2BE212E729C00A42D04 /* test0.cpp */,
-				25B7C2BF212E729C00A42D04 /* test1.cpp */,
-				25B7C2C0212E729C00A42D04 /* test2.cpp */,
-				25B7C2C1212E729C00A42D04 /* test3.cpp */,
-				25B7C2C2212E729C00A42D04 /* test4.cpp */,
 				25B7C2C3212E729C00A42D04 /* tilemap_dungeon_8x8.cpp */,
+				25B7C2CB213E414800A42D04 /* TileMap.cpp */,
+				25B7C2CC213E414800A42D04 /* TileMap.h */,
+				25B7C2CE213EC52B00A42D04 /* TileBank.cpp */,
+				25B7C2CF213EC52B00A42D04 /* TileBank.h */,
 			);
 			name = sketch;
 			sourceTree = "<group>";
@@ -191,13 +186,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				25B7C2BC212E714700A42D04 /* Serial.cpp in Sources */,
-				25B7C2C5212E729C00A42D04 /* test1.cpp in Sources */,
-				25B7C2C6212E729C00A42D04 /* test2.cpp in Sources */,
-				25B7C2C7212E729C00A42D04 /* test3.cpp in Sources */,
+				25B7C2D0213EC52B00A42D04 /* TileBank.cpp in Sources */,
 				25B7C2B4212E6F7C00A42D04 /* i2c.cpp in Sources */,
-				25B7C2C4212E729C00A42D04 /* test0.cpp in Sources */,
-				25B7C2C8212E729C00A42D04 /* test4.cpp in Sources */,
 				25B7C2AF212DA75200A42D04 /* main.cpp in Sources */,
+				25B7C2CD213E414800A42D04 /* TileMap.cpp in Sources */,
 				25B7C2C9212E729C00A42D04 /* tilemap_dungeon_8x8.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

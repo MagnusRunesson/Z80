@@ -1,0 +1,6 @@
+2048 för tiles (256 stycken)
+2048 för tilemap (256x8, 128x16, 64x32?)
+1 byte för setting (width)
+1 byte för x-offset
+
+2048 för sprites

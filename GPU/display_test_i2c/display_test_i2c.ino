@@ -10,7 +10,7 @@ int waitCycles;
 
 int frame;
 
-uint8 screen[ 128 * 64 / 8 ];
+//uint8 screen[ 128 * 64 / 8 ];
 
 void display_init() {
   i2c_start(ADDR);
@@ -258,11 +258,6 @@ void setup() {
   frame = 0;
 }
 
-#include "test0.h"
-#include "test1.h"
-#include "test2.h"
-#include "test3.h"
-#include "test4.h"
 #include "tilemap_dungeon_8x8.h"
 
 void loop() 
