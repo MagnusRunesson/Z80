@@ -1,0 +1,53 @@
+Från vänster
+Gul: Power
+Blå: M1
+Grön: Läsa från minne
+Röd: WR är aktiv
+
+Blå: not(/M1)
+Så när M1 är activ, d.v.s. 0, så gör NOT att det lyser
+
+Grön: not(/RD or /MREQ)
+active low RD
+active low MREQ
+inte RD betyder att RD=HI
+inte MREQ betyder att MREQ=HI
+när det är RD så är RD=0
+när det är MREQ så är MREQ=0
+när både RD och MREQ är 0 betyder det att det är en memory request read och resultatet av OR'en är 0
+När det är antingen RD eller MREQ så är resultatet av OR'en 1
+Sen inverteras allting, så när det är en MREQ RD så lyser gröna lampan
+
+Röd: not(/WR)
+
+
+
+15
+13
+16
+14
+17
+15
+18
+16
+19
+18
+20
+18
+21
+19
+22
+20
+23
+21
+24
+22
+25
+23
+26
+24
+27
+25
+31
+26
+29
