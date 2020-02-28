@@ -67,6 +67,7 @@ const int PIN_CE        = 36; /* EEPROM 20 */
 // These delays are copied from the AT28C256 datasheet
 const int DELAY_tWC       = 12;   // Write Cycle Time
 const int DELAY_tDS       = 52;   // Data setup time
+const int DELAY_tDH       = 100;  // Data hold time
 
 void addressSetBus( int _address, bool _bPrint )
 {
@@ -213,6 +214,8 @@ void chipWrite( int _address, int _value )
   
   digitalWrite( PIN_CE, HIGH );
   digitalWrite( PIN_WE, HIGH );
+
+  delay(DELAY_tDH);
 }
 
 void flashTest()
@@ -335,7 +338,7 @@ void setup() {
 
 
   flashROMImage();
-  //flashNOP( 100 );
+  //flashNOP( 256 );
   
   delay( 300 );
   
