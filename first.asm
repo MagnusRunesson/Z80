@@ -24,10 +24,231 @@ code_start  equ 0x0000
 
 
 #code   CODE, code_start
+	nop
+	nop
+	nop
+	nop
 
+	ld bc,$80ff
+	nop
+
+
+;	ld (bc),a
+;	; All things should start with 3 sweet nops
+;	nop
+;	nop
+;	nop
+;	nop
+
+	; then some nice incs
+;	inc a
+;	inc b
+;	inc c
+;	inc a
+
+	; some nops
+;	nop
+;	nop
+;	nop
+;	nop
+
+;	; then load from rom
+;	ld hl,$0004
+;	nop
+;	nop
+;	nop
+	ld a,0
+	ld (bc),a
+	nop
+
+;loopie:
+	ld a,(bc)
 	inc a
+	ld (bc),a
+	nop
+
+	ld a,(bc)
 	inc a
+	ld (bc),a
+	nop
+
+	ld a,(bc)
 	inc a
+	ld (bc),a
+	nop
+
+	ld a,(bc)
+	inc a
+	ld (bc),a
+	nop
+
+	ld a,(bc)
+	inc a
+	ld (bc),a
+	nop
+
+	ld a,(bc)
+	inc a
+	ld (bc),a
+	nop
+
+	ld a,(bc)
+	inc a
+	ld (bc),a
+	nop
+
+	ld a,(bc)
+	inc a
+	ld (bc),a
+	nop
+
+	ld a,(bc)
+	inc a
+	ld (bc),a
+	nop
+
+	ld a,(bc)
+	inc a
+	ld (bc),a
+	nop
+
+	ld a,(bc)
+	inc a
+	ld (bc),a
+	nop
+
+	ld a,(bc)
+	inc a
+	ld (bc),a
+	nop
+
+;	jp loopie
+
+	;ld b,(hl)
+	nop
+
+	; more sweet nops
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+
 	inc a
 	inc a
 	inc a

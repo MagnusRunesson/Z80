@@ -1,6 +1,6 @@
                         ; --------------------------------------
                         ; zasm: assemble "first.asm"
-                        ; date: 2018-08-30 11:24:28
+                        ; date: 2020-02-15 22:22:28
                         ; --------------------------------------
 
 
@@ -30,36 +30,257 @@
                         
                         
 0000:                   #code   CODE, code_start
+0000: 00       [ 4]     	nop
+0001: 00       [ 8]     	nop
+0002: 00       [12]     	nop
+0003: 00       [16]     	nop
                         
-0000: 3C       [ 4]     	inc a
-0001: 3C       [ 8]     	inc a
-0002: 3C       [12]     	inc a
-0003: 3C       [16]     	inc a
-0004: 3C       [20]     	inc a
-0005: 3C       [24]     	inc a
-0006: 3C       [28]     	inc a
-0007: 3C       [32]     	inc a
-0008: 3C       [36]     	inc a
-0009: 3C       [40]     	inc a
-000A: 3C       [44]     	inc a
-000B: 3C       [48]     	inc a
-000C: 3C       [52]     	inc a
-000D: 3C       [56]     	inc a
-000E: 3C       [60]     	inc a
-000F: 3C       [64]     	inc a
-0010: 3C       [68]     	inc a
-0011: 3C       [72]     	inc a
-0012: 3C       [76]     	inc a
-0013: 3C       [80]     	inc a
-0014: 3C       [84]     	inc a
-0015: 3C       [88]     	inc a
-0016: 3C       [92]     	inc a
-0017: 3C       [96]     	inc a
-0018: 3C       [100]    	inc a
-0019: 3C       [104]    	inc a
-001A: 3C       [108]    	inc a
-001B: 3C       [112]    	inc a
-001C: 3C       [116]    	inc a
+0004: 01FF80   [26]     	ld bc,$80ff
+0007: 00       [30]     	nop
+                        
+                        
+                        ;	ld (bc),a
+                        ;	; All things should start with 3 sweet nops
+                        ;	nop
+                        ;	nop
+                        ;	nop
+                        ;	nop
+                        
+                        	; then some nice incs
+                        ;	inc a
+                        ;	inc b
+                        ;	inc c
+                        ;	inc a
+                        
+                        	; some nops
+                        ;	nop
+                        ;	nop
+                        ;	nop
+                        ;	nop
+                        
+                        ;	; then load from rom
+                        ;	ld hl,$0004
+                        ;	nop
+                        ;	nop
+                        ;	nop
+0008: 3E00     [37]     	ld a,0
+000A: 02       [44]     	ld (bc),a
+000B: 00       [48]     	nop
+                        
+                        ;loopie:
+000C: 0A       [55]     	ld a,(bc)
+000D: 3C       [59]     	inc a
+000E: 02       [66]     	ld (bc),a
+000F: 00       [70]     	nop
+                        
+0010: 0A       [77]     	ld a,(bc)
+0011: 3C       [81]     	inc a
+0012: 02       [88]     	ld (bc),a
+0013: 00       [92]     	nop
+                        
+0014: 0A       [99]     	ld a,(bc)
+0015: 3C       [103]    	inc a
+0016: 02       [110]    	ld (bc),a
+0017: 00       [114]    	nop
+                        
+0018: 0A       [121]    	ld a,(bc)
+0019: 3C       [125]    	inc a
+001A: 02       [132]    	ld (bc),a
+001B: 00       [136]    	nop
+                        
+001C: 0A       [143]    	ld a,(bc)
+001D: 3C       [147]    	inc a
+001E: 02       [154]    	ld (bc),a
+001F: 00       [158]    	nop
+                        
+0020: 0A       [165]    	ld a,(bc)
+0021: 3C       [169]    	inc a
+0022: 02       [176]    	ld (bc),a
+0023: 00       [180]    	nop
+                        
+0024: 0A       [187]    	ld a,(bc)
+0025: 3C       [191]    	inc a
+0026: 02       [198]    	ld (bc),a
+0027: 00       [202]    	nop
+                        
+0028: 0A       [209]    	ld a,(bc)
+0029: 3C       [213]    	inc a
+002A: 02       [220]    	ld (bc),a
+002B: 00       [224]    	nop
+                        
+002C: 0A       [231]    	ld a,(bc)
+002D: 3C       [235]    	inc a
+002E: 02       [242]    	ld (bc),a
+002F: 00       [246]    	nop
+                        
+0030: 0A       [253]    	ld a,(bc)
+0031: 3C       [257]    	inc a
+0032: 02       [264]    	ld (bc),a
+0033: 00       [268]    	nop
+                        
+0034: 0A       [275]    	ld a,(bc)
+0035: 3C       [279]    	inc a
+0036: 02       [286]    	ld (bc),a
+0037: 00       [290]    	nop
+                        
+0038: 0A       [297]    	ld a,(bc)
+0039: 3C       [301]    	inc a
+003A: 02       [308]    	ld (bc),a
+003B: 00       [312]    	nop
+                        
+                        ;	jp loopie
+                        
+                        	;ld b,(hl)
+003C: 00       [316]    	nop
+                        
+                        	; more sweet nops
+003D: 00       [320]    	nop
+003E: 00       [324]    	nop
+003F: 00       [328]    	nop
+0040: 00       [332]    	nop
+0041: 00       [336]    	nop
+0042: 00       [340]    	nop
+0043: 00       [344]    	nop
+0044: 00       [348]    	nop
+0045: 00       [352]    	nop
+0046: 00       [356]    	nop
+0047: 00       [360]    	nop
+0048: 00       [364]    	nop
+0049: 00       [368]    	nop
+004A: 00       [372]    	nop
+004B: 00       [376]    	nop
+004C: 00       [380]    	nop
+004D: 00       [384]    	nop
+004E: 00       [388]    	nop
+004F: 00       [392]    	nop
+0050: 00       [396]    	nop
+0051: 00       [400]    	nop
+0052: 00       [404]    	nop
+0053: 00       [408]    	nop
+0054: 00       [412]    	nop
+0055: 00       [416]    	nop
+0056: 00       [420]    	nop
+0057: 00       [424]    	nop
+0058: 00       [428]    	nop
+0059: 00       [432]    	nop
+005A: 00       [436]    	nop
+005B: 00       [440]    	nop
+005C: 00       [444]    	nop
+005D: 00       [448]    	nop
+005E: 00       [452]    	nop
+005F: 00       [456]    	nop
+0060: 00       [460]    	nop
+0061: 00       [464]    	nop
+0062: 00       [468]    	nop
+0063: 00       [472]    	nop
+0064: 00       [476]    	nop
+0065: 00       [480]    	nop
+0066: 00       [484]    	nop
+0067: 00       [488]    	nop
+0068: 00       [492]    	nop
+0069: 00       [496]    	nop
+006A: 00       [500]    	nop
+006B: 00       [504]    	nop
+006C: 00       [508]    	nop
+006D: 00       [512]    	nop
+006E: 00       [516]    	nop
+006F: 00       [520]    	nop
+0070: 00       [524]    	nop
+0071: 00       [528]    	nop
+0072: 00       [532]    	nop
+0073: 00       [536]    	nop
+0074: 00       [540]    	nop
+0075: 00       [544]    	nop
+0076: 00       [548]    	nop
+0077: 00       [552]    	nop
+0078: 00       [556]    	nop
+0079: 00       [560]    	nop
+007A: 00       [564]    	nop
+007B: 00       [568]    	nop
+007C: 00       [572]    	nop
+007D: 00       [576]    	nop
+007E: 00       [580]    	nop
+007F: 00       [584]    	nop
+0080: 00       [588]    	nop
+0081: 00       [592]    	nop
+0082: 00       [596]    	nop
+0083: 00       [600]    	nop
+0084: 00       [604]    	nop
+0085: 00       [608]    	nop
+0086: 00       [612]    	nop
+0087: 00       [616]    	nop
+0088: 00       [620]    	nop
+0089: 00       [624]    	nop
+008A: 00       [628]    	nop
+008B: 00       [632]    	nop
+008C: 00       [636]    	nop
+008D: 00       [640]    	nop
+008E: 00       [644]    	nop
+008F: 00       [648]    	nop
+0090: 00       [652]    	nop
+0091: 00       [656]    	nop
+0092: 00       [660]    	nop
+0093: 00       [664]    	nop
+0094: 00       [668]    	nop
+0095: 00       [672]    	nop
+0096: 00       [676]    	nop
+0097: 00       [680]    	nop
+0098: 00       [684]    	nop
+0099: 00       [688]    	nop
+009A: 00       [692]    	nop
+009B: 00       [696]    	nop
+009C: 00       [700]    	nop
+009D: 00       [704]    	nop
+009E: 00       [708]    	nop
+009F: 00       [712]    	nop
+00A0: 00       [716]    	nop
+00A1: 00       [720]    	nop
+00A2: 00       [724]    	nop
+00A3: 00       [728]    	nop
+00A4: 00       [732]    	nop
+00A5: 00       [736]    	nop
+00A6: 00       [740]    	nop
+00A7: 00       [744]    	nop
+00A8: 00       [748]    	nop
+00A9: 00       [752]    	nop
+00AA: 00       [756]    	nop
+00AB: 00       [760]    	nop
+00AC: 00       [764]    	nop
+00AD: 00       [768]    	nop
+00AE: 00       [772]    	nop
+00AF: 00       [776]    	nop
+00B0: 00       [780]    	nop
+00B1: 00       [784]    	nop
+00B2: 00       [788]    	nop
+00B3: 00       [792]    	nop
+00B4: 00       [796]    	nop
+                        
+00B5: 3C       [800]    	inc a
+00B6: 3C       [804]    	inc a
+00B7: 3C       [808]    	inc a
+00B8: 3C       [812]    	inc a
+00B9: 3C       [816]    	inc a
+00BA: 3C       [820]    	inc a
+00BB: 3C       [824]    	inc a
+00BC: 3C       [828]    	inc a
+00BD: 3C       [832]    	inc a
+00BE: 3C       [836]    	inc a
+00BF: 3C       [840]    	inc a
+00C0: 3C       [844]    	inc a
+00C1: 3C       [848]    	inc a
+00C2: 3C       [852]    	inc a
+00C3: 3C       [856]    	inc a
+00C4: 3C       [860]    	inc a
+00C5: 3C       [864]    	inc a
+00C6: 3C       [868]    	inc a
+00C7: 3C       [872]    	inc a
+00C8: 3C       [876]    	inc a
+00C9: 3C       [880]    	inc a
+00CA: 3C       [884]    	inc a
+00CB: 3C       [888]    	inc a
+00CC: 3C       [892]    	inc a
+00CD: 3C       [896]    	inc a
+00CE: 3C       [900]    	inc a
                         
                         
                         ; define some code here
@@ -172,7 +393,7 @@
 
 ; +++ segments +++
 
-#CODE CODE:      start=0     len=29   
+#CODE CODE:      start=0     len=207  
 #DATA VARIABLES: start=23296 len=256  
 
 ; +++ global symbols +++
@@ -183,5 +404,5 @@ code_start = $0000 =      0            first.asm:17
 data_start = $5B00 =  23296            first.asm:16
 
 
-total time: 0.0050 sec.
+total time: 0.0029 sec.
 no errors
