@@ -79,7 +79,7 @@ int main( int argc, const char * argv[])
 	fprintf( f, "const unsigned char %s[] = {\n", pszOutSymbol );
 	int i;
 	for( i=0; i<size; i++ )
-		fprintf( f, "\t0x%02x,\n", pData[ i ]);
+		fprintf( f, "\t0x%02x, // 0x%04x\n", pData[ i ], i);
 	fprintf( f, "};\n" );
 	fprintf( f, "\n" );
 	fclose( f );
